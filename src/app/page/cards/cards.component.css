@@ -1,0 +1,26 @@
+/* .example-card {
+    max-width: 40%;
+    max-height: 95%;
+  } */
+  .example-card {
+    max-width: 400px;
+  }
+
+  .example-header-image {
+    background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-size: cover;
+  }
+
+  .filtro{
+    border: 1px solid rgb(0, 0, 0);
+    float: left;
+  }
+
+  .tarjetas{
+    float: left;
+  }
+  .card{
+    max-width: 1240px;
+    text-align: center;
+    margin: auto;
+}

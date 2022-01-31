@@ -1,0 +1,70 @@
+
+<div class="container">
+    <form id="form" class="sss">
+        <div class="form ">
+            <h1>Registro</h1>
+            <mat-stepper #stepper>
+                <mat-step [stepControl]="firstFormGroup">
+                  <form [formGroup]="firstFormGroup">
+                    <ng-template matStepLabel>Datos Personales</ng-template>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Nombres</mat-label>
+                      <input matInput placeholder="Last name, First name" formControlName="name" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Apellidos</mat-label>
+                        <input matInput placeholder="Last name, First name" formControlName="lastName" required>
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Correo</mat-label>
+                      <input matInput placeholder="pepito123@gmail.com" formControlName="correo" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill">
+                        <mat-label>documento</mat-label>
+                        <input matInput placeholder="11928915866" formControlName="documento" required>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                      <mat-label>Tipo de documento</mat-label>
+                      <mat-select [(ngModel)]="codigo" formControlName="tipo_documento" required placeholder="Tipo de documento">
+                        <mat-option [value]="p.codigo" *ngFor="let c of (tipo_documento$ | async)"> {{p.nombre}} </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <br>
+                    <!-- <mat-checkbox formControlName="terminos" class="example-margin">
+                      <a href="https://www.macroplastics.com/images/docs/Terminos-y-Condiciones-de-Venta.pdf">Acepta los terminos y condiciones?</a>
+                    </mat-checkbox> -->
+                    <div>
+                      <button mat-button matStepperNext>Continuar</button>
+                    </div>
+                  </form>
+                </mat-step>
+
+
+                <mat-step [stepControl]="secondFormGroup">
+                  <form [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Datos de acceso</ng-template>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Usuario</mat-label>
+                      <input matInput formControlName="user" placeholder="Juano3000"  required>
+                      <input hidden matInput formControlName="estado" value="lstEstCodigo[0].codigo" required>
+                    </mat-form-field><br>
+                    <mat-form-field appearance="fill">
+                        <mat-label>Contraseña</mat-label>
+                        <input matInput formControlName="password" required [type]="show ? 'text' : 'password'">
+                        <button matSuffix mat-icon-button (click)="password()">
+                          <mat-icon>visibility</mat-icon>
+                        </button>
+                      </mat-form-field>
+                      <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha2"></ngx-recaptcha2>
+                    <div>
+                      <button mat-button matStepperPrevious>Back</button>
+                      <button mat-button matStepperNext  (click)="registrar()">Next</button>
+                    </div>
+                  </form>
+                </mat-step>
+              </mat-stepper>
+        </div>
+    </form>
+</div>

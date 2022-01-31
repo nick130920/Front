@@ -1,0 +1,83 @@
+<div class="example-container">
+    <mat-toolbar color="primary" class="example-toolbar">
+        <button mat-icon-button (click)="sidenav.toggle()">
+            <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
+            <mat-icon *ngIf="sidenav.opened">close</mat-icon>
+        </button>
+        <button mat-menu-item routerLink="/cards" style="cursor: pointer; width: min-content;">
+          <img src="assets/images/E-Commerce2.png" width="128" style="margin-left: 20px">
+        </button>
+        <span class="example-spacer"></span>
+
+
+        <!--
+            <mat-icon matBadge="{{badge}}" matBadgeColor="warn">home</mat-icon>
+              <!-- Include text description of the icon's meaning for screen-readers
+              <span class="cdk-visually-hidden">
+                Example with a home icon with overlaid badge showing the number 15
+              </span>
+            -->
+
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+
+
+
+
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/perfil" *ngIf="!sesion">
+                <mat-icon>account_box</mat-icon>
+                <span>Mi Perfil</span>
+            </button>
+            <button mat-menu-item routerLink="/login" *ngIf="sesion">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Iniciar Sesión</span>
+            </button>
+        </mat-menu>
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container">
+        <mat-sidenav #sidenav style="width: 200px" mode="over">
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/productos" style="cursor: pointer">
+              <img src="assets/images/E-Commerce2.png" width="128" style="margin-left: 20px">
+            </button>
+
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/productos" style="cursor: pointer">
+                <mat-icon>insert_drive_file</mat-icon>
+                <span>Productos</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/categoria" style="cursor: pointer">
+                <mat-icon>insert_drive_file</mat-icon>
+                <span>Categoria.</span>
+            </button>
+
+            <button mat-menu-item (click)="closeS()"
+                style="cursor: pointer; bottom: 5px; position: absolute;" *ngIf="!sesion">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Cerrar sesion</span>
+            </button>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content>
+
+            <router-outlet></router-outlet>
+
+
+        </mat-sidenav-content>
+
+    </mat-sidenav-container>
+    <footer id="footer" class="py-2" style="background-color: #F07319; color: white;">
+        <div class="container text-center">
+            <p>
+                &copy; ecommerce 2021 . Todos los derechos reservados. - Conoce nuestra Política de privacidad. - Política de Datos.
+
+            </p>
+            <p>
+                E-mail: info@ecommerce.com.co - Teléfono: 01 8000 942 434
+            </p>
+        </div>
+    </footer>
+</div>

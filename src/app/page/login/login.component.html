@@ -1,0 +1,62 @@
+    <!--<div>
+        <br>
+        <form [formGroup]="form">
+            <br>
+            <div fxLayout="column" fxLayoutAlign="center center">
+                <mat-form-field>
+                    <mat-label>Usuario</mat-label>
+                    <input matInput formControlName="usuario" #message maxlength="100" placeholder="Usuario">
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput formControlName="clave" #message maxlength="100" placeholder="Contraseña"
+                        type="password">
+                </mat-form-field>
+                <button [disabled]="!form.valid" (click)='onLoginClick()' mat-fab color="primary">
+                    <mat-icon>send</mat-icon>
+                </button>
+
+            </div>
+        </form>
+    </div> -->
+
+    <!--Prueba-->
+    <div id="contenedor">
+            
+        <div id="contenedorcentrado">
+            <div id="login">
+                <form [formGroup]="form">
+                    <br>
+                    <div>
+                        <mat-form-field>
+                            <mat-label>Usuario</mat-label>
+                            <input matInput formControlName="usuario" #message maxlength="100" placeholder="Usuario">
+                        </mat-form-field>
+        
+                        <mat-form-field>
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput formControlName="clave" #message maxlength="100" placeholder="Contraseña"
+                                type="password">
+                        </mat-form-field>
+                        <button [disabled]="!form.valid" (click)='onLoginClick()'>
+                            <mat-icon>send</mat-icon>
+                        </button>
+        
+                    </div>
+                </form>
+                
+            </div>
+            <div id="derecho">
+                <div class="titulo">
+                    Bienvenido
+                </div>
+                <hr>
+                <div class="pie-form">
+                    <a (click)="move('persona-admin')">¿No tienes Cuenta? Registrate</a>
+                    <hr>
+                    <a (click)="move('home')">« Volver</a>
+                </div>
+            </div>
+        </div>
+    </div>

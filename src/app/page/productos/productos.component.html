@@ -1,0 +1,108 @@
+<!-- PRODUCTO -->
+<div class="container">
+  <ul></ul>
+  <div class="row">
+    <img src="http://localhost:8181/api/producto/imagen/{{producto.codigo}}" aling="left" style="height: 250px;" alt="No tiene imagen">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-muted">{{producto.nombre}}</span>
+        <span class="badge badge-secondary badge-pill"></span>
+      </h4>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Stock: {{producto.stock}}</h6>
+            <form>
+              <p class="clasificacion">
+                <input id="radio1" type="radio" name="estrellas" value="5">
+                <label for="radio1">★</label>
+                <input id="radio2" type="radio" name="estrellas" value="4">
+                <label for="radio2">★</label>
+                <input id="radio3" type="radio" name="estrellas" value="3">
+                <label for="radio3">★</label>
+                <input id="radio4" type="radio" name="estrellas" value="2">
+                <label for="radio4">★</label>
+                <input id="radio5" type="radio" name="estrellas" value="1">
+                <label for="radio5">★</label>
+              </p>
+            </form>
+          </div>
+          <span class="text-muted">${{producto.precio}}</span>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between">
+          <span>
+            <div class="input-group">
+              <div class="input-group-append">
+                <button type="submit" class="btn btn-secondary"
+                  style="background-color:#41B950; border-color:#41B950">Agregar al
+                  carrito</button>
+              </div>
+            </div>
+          </span>
+
+        </li>
+      </ul>
+
+
+      <ul></ul>
+
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted">Descripción</span>
+  </h4>
+  <p class="my-0">{{producto.descripcion}}</p>
+  <ul></ul>
+</div>
+<div class="container">
+  <h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted">Comentarios</span>
+  </h4>
+  <form class="card p-2">
+    <div class="input-group">
+      <div class="input-group-append">
+        <div>
+          <form>
+            <h6 class="my-0">Excelente</h6>
+            <p class="clasificacion">
+              <input id="radio1" type="radio" name="estrellas" value="5">
+              <!-- --><label for="radio1">★</label>
+              <!----><input id="radio2" type="radio" name="estrellas" value="4">
+              <!----><label for="radio2">★</label>
+              <!----><input id="radio3" type="radio" name="estrellas" value="3">
+              <!----><label for="radio3">★</label>
+              <!----><input id="radio4" type="radio" name="estrellas" value="2">
+              <!----><label for="radio4">★</label>
+              <!----><input id="radio5" type="radio" name="estrellas" value="1">
+              <!----><label for="radio5">★</label>
+
+            </p>
+            <p>Por ese precio uno pensaria que es malo , pero es buenisimo!!! super comodos , el
+              material
+              super bueno, el tamaño perfecto, la calidad excelente, tienen muy buen volumen de
+              sonido. Al
+              verlos uno pensaria que el precio podria estar por encima de los 150. 000.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>
+<div class="container">
+  <ul></ul>
+  <form class="card p-2">
+    <div class="input-group">
+      <input type="text" class="form-control" placeholder="Escribe un comentario sobre el producto">
+      <div class="input-group-append">
+        <button type="submit" class="btn btn-secondary"
+          style="background-color:#41B950; border-color:#41B950">Comentar</button>
+      </div>
+    </div>
+  </form>
+  <ul></ul>
+</div>

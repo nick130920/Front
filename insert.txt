@@ -1,0 +1,5 @@
+INSERT INTO `estado` (`est_codigo`, `est_cliente`, `est_ip`, `est_nombre`, `est_usuario`) VALUES ('1', 'qwe', '123', 'activo', '1qwe');
+INSERT INTO `categoria` (`cat_codigo`, `cat_cliente`, `cat_ip`, `cat_nombre`, `cat_usuario`, `est_codigo`) VALUES (NULL, 'qwe112', 'weq11', 'herramientas', 'qwe123', '1');
+INSERT INTO `producto` (`pro_codigo`, `pro_cliente`, `pro_descripcion`, `pro_imagen`, `pro_ip`, `pro_nombre`, `pro_precio`, `pro_referencia`, `pro_stock`, `pro_usuario`, `cat_codigo`, `est_codigo`) VALUES (NULL, '123qqq', 'martillo de acero inoxidable', 'no tiene', '123qwe', 'Martillo', '50000', '123', '2', 'no c', '1', '1');
+INSERT INTO `tipo_documento` (`tid_codigo`, `tid_nombre`) VALUES (NULL, 'Registro civil de nacimiento'), (NULL, 'Tarjeta de identidad'), (NULL, 'Cédula de ciudadanía'), (NULL, 'Tarjeta de extranjería'), (NULL, 'Cédula de extranjería'), (NULL, 'NIT'), (NULL, 'Pasaporte'), (NULL, 'Tipo de documento extranjero');
+

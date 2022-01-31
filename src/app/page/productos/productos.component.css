@@ -1,0 +1,69 @@
+.navbar{
+  box-shadow: 2px 2px 5px #F07319; /* Efecto sombra debajo del menú */
+  opacity: .9;
+}
+
+.navbar .nav-item .nav-link{
+  color: #ffffff;
+}
+
+.main-header{
+  position: relative;
+  background-size: cover; /* Ocupa todo el tamaño de la pantalla la imagen */
+  min-height: 600px;
+}
+
+#form {
+  width: 250px;
+  margin: 0 auto;
+  height: 25px;
+}
+
+#form p {
+  text-align: center;
+}
+
+#form label {
+  font-size: 20px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+label {
+  color: grey;
+}
+
+.clasificacion {
+  direction: rtl;
+  unicode-bidi: bidi-override;
+}
+
+label:hover,
+label:hover ~ label {
+  color: #F07319;
+}
+
+input[type="radio"]:checked ~ label {
+  color: #F07319;
+}
+
+
+.background-overlay{
+  position: absolute;
+  /*background: rgba(255, 190, 118, 0.7);*/
+  top: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+}
+
+.form-control, .btn{
+  border-radius: 0;
+
+}
+
+.team, footer{
+  background: #F07319;
+}
