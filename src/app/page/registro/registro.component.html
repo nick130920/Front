@@ -24,19 +24,27 @@
                         <mat-label>documento</mat-label>
                         <input matInput placeholder="11928915866" formControlName="documento" required>
                     </mat-form-field>
+                    <br>
+                    <mat-form-field appearance="fill">
+                      <mat-label>Selecciona Fecha</mat-label>
+                      <input formControlName="nacimiento" matInput [matDatepicker]="picker">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
 
-                    <mat-form-field>
+                    <mat-form-field appearance="fill">
                       <mat-label>Tipo de documento</mat-label>
-                      <mat-select [(ngModel)]="codigo" formControlName="tipo_documento" required placeholder="Tipo de documento">
-                        <mat-option [value]="p.codigo" *ngFor="let c of (tipo_documento$ | async)"> {{p.nombre}} </mat-option>
+                      <mat-select formControlName="tipo" required>
+                        <mat-option [value]="p.codigo" *ngFor="let p of tipo_documento"> {{p.nombre}} </mat-option>
                       </mat-select>
                     </mat-form-field>
+
                     <br>
-                    <!-- <mat-checkbox formControlName="terminos" class="example-margin">
+                    <mat-checkbox [(ngModel)]="checked" formControlName="terminos" class="example-margin" required>
                       <a href="https://www.macroplastics.com/images/docs/Terminos-y-Condiciones-de-Venta.pdf">Acepta los terminos y condiciones?</a>
-                    </mat-checkbox> -->
+                    </mat-checkbox>
                     <div>
-                      <button mat-button matStepperNext>Continuar</button>
+                      <button [disabled]="!firstFormGroup.valid" mat-button matStepperNext>Continuar</button>
                     </div>
                   </form>
                 </mat-step>
@@ -60,7 +68,7 @@
                       <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha2"></ngx-recaptcha2>
                     <div>
                       <button mat-button matStepperPrevious>Back</button>
-                      <button mat-button matStepperNext  (click)="registrar()">Next</button>
+                      <button mat-button matStepperNext [disabled]="!secondFormGroup.valid" (click)="registrar()" routerLink="../cards">Next</button>
                     </div>
                   </form>
                 </mat-step>

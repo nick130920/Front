@@ -55,13 +55,23 @@ export class CardsComponent implements OnInit {
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
   filtrar_Categoria(parametro:number) {
-    this.productoService.buscarProductosPorCategoria(parametro).subscribe(data =>{
-      this.dataSource = new MatTableDataSource<Producto>(data);
-      console.log(this.dataSource);
-      this.obs = this.dataSource.connect();
-      this.paginator.firstPage();
-      this.dataSource.paginator = this.paginator;
-    });
+    if(parametro==0){
+      this.productoService.buscarTodo().subscribe(data =>{
+        this.dataSource = new MatTableDataSource<Producto>(data);
+        console.log(this.dataSource);
+        this.obs = this.dataSource.connect();
+        this.paginator.firstPage();
+        this.dataSource.paginator = this.paginator;
+      });
+    }else{
+      this.productoService.buscarProductosPorCategoria(parametro).subscribe(data =>{
+        this.dataSource = new MatTableDataSource<Producto>(data);
+        console.log(this.dataSource);
+        this.obs = this.dataSource.connect();
+        this.paginator.firstPage();
+        this.dataSource.paginator = this.paginator;
+      });
+    }
   }
 
   listarCategoria() {

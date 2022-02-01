@@ -67,3 +67,7 @@ input[type="radio"]:checked ~ label {
 .team, footer{
   background: #F07319;
 }
+ngb-rating {
+    color: #FFC107;
+    font-size: 40px;
+  }

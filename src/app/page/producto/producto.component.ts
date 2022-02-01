@@ -228,6 +228,7 @@ export class ProductoComponent implements OnInit {
     this.form.get('nombre').setValue(element.nombre);
     this.form.get('descripcion').setValue(element.descripcion);
     this.form.get('precio').setValue(element.precio);
+    this.form.get('stock').setValue(element.stock);
     this.form.get('referencia').setValue(element.referencia);
     this.form.get('categoria').setValue(element.categoria.codigo);
     this.form.get('imagen').setValue(element.imagen);

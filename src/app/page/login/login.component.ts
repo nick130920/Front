@@ -8,6 +8,8 @@ import { role } from 'src/app/shared/role';
 import { LogicaGuardService } from 'src/app/guard/logica-guard.service';
 import { LogicaGuardNavService } from 'src/app/guard/logica-guard-nav.service';
 
+import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ import { LogicaGuardNavService } from 'src/app/guard/logica-guard-nav.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  show:boolean;
   form: FormGroup;
   admin: boolean;
   sesion: boolean;
@@ -27,7 +29,9 @@ export class LoginComponent implements OnInit {
     private logicaGuard: LogicaGuardService,
     private logicaGuardNav: LogicaGuardNavService,
     private navService:NavService,
-  ) { }
+    private spinner: NgxSpinnerService,
+    private toastr: ToastrService,
+  ) {this.show = false;}
 
 
 
@@ -48,7 +52,6 @@ export class LoginComponent implements OnInit {
   onLoginClick(): void {
 
     this.loginService.login(this.form.get('usuario').value, this.form.get('clave').value).subscribe(res => {
-
       sessionStorage.setItem(environment.tokenName, res.access_token);
       // redireccionar a pagina de inciio
       console.log(res);
@@ -58,16 +61,14 @@ export class LoginComponent implements OnInit {
     }, err => {
 
       console.log(err);
-
       if (err.status == 500) {
-
         // error en el servidor
         console.log('error');
-
+        this.mensajeError("Error en el servidor");
       } else {
-
         // credenciales incorrectas
         console.log('credenciales incorrectas');
+        this.mensajeError("Credenciales incorrectas");
       }
 
     });
@@ -85,11 +86,18 @@ export class LoginComponent implements OnInit {
     this.navService.navLogin.emit(this.sesion);
 
   }
-
+  password() {
+    this.show = !this.show;
+  }
   move(ruta): void {
     this.router.navigateByUrl(ruta);
   }
 
+  private mensajeError(err: any) {
+    this.spinner.hide();
+    console.log(err);
+    this.toastr.error(err);
+  }
   /*canActivate(): void {
     this.admin = this.logicaGuard.permisosValidosNav([role.administrador]);
   }*/

@@ -25,6 +25,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoginComponent } from './page/login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { LoginComponent } from './page/login/login.component';
     MatSelectModule,
     MatTableModule,
     MatPaginatorModule,
-    MaterialFileInputModule
+    MaterialFileInputModule,
+    NgbModule
   ],
   providers: [
     {

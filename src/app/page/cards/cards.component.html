@@ -4,7 +4,9 @@
 <div style="margin-top: 6px;" fxLayout="row">
 
     <div class="filtro" style="width: 15%; margin-left: 3%;">
+      <button mat-menu-item (click)="filtrar_Categoria(0)" style="cursor: pointer">
         <h1>Categorias</h1>
+      </button>
         <mat-divider></mat-divider>
         <button mat-menu-item (click)="filtrar_Categoria(p.codigo)"  *ngFor="let p of lstCatCodigo" style="cursor: pointer">
           <span>{{p.nombre}}</span>

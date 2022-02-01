@@ -1,4 +1,4 @@
-    <!--<div>
+<!--<div>
         <br>
         <form [formGroup]="form">
             <br>
@@ -21,42 +21,44 @@
         </form>
     </div> -->
 
-    <!--Prueba-->
-    <div id="contenedor">
-            
-        <div id="contenedorcentrado">
-            <div id="login">
-                <form [formGroup]="form">
-                    <br>
-                    <div>
-                        <mat-form-field>
-                            <mat-label>Usuario</mat-label>
-                            <input matInput formControlName="usuario" #message maxlength="100" placeholder="Usuario">
-                        </mat-form-field>
-        
-                        <mat-form-field>
-                            <mat-label>Contraseña</mat-label>
-                            <input matInput formControlName="clave" #message maxlength="100" placeholder="Contraseña"
-                                type="password">
-                        </mat-form-field>
-                        <button [disabled]="!form.valid" (click)='onLoginClick()'>
-                            <mat-icon>send</mat-icon>
-                        </button>
-        
-                    </div>
-                </form>
-                
-            </div>
-            <div id="derecho">
-                <div class="titulo">
-                    Bienvenido
-                </div>
-                <hr>
-                <div class="pie-form">
-                    <a (click)="move('persona-admin')">¿No tienes Cuenta? Registrate</a>
-                    <hr>
-                    <a (click)="move('home')">« Volver</a>
-                </div>
-            </div>
+<!--Prueba-->
+<div id="contenedor">
+
+  <div id="contenedorcentrado">
+    <div id="login">
+      <form [formGroup]="form">
+        <br>
+        <div>
+          <mat-form-field>
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="usuario" #message maxlength="100" placeholder="Usuario">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="clave" #message maxlength="100" placeholder="Contraseña" [type]="show ? 'text' : 'password'">
+            <button matSuffix mat-icon-button (click)="password()">
+              <mat-icon>visibility</mat-icon>
+            </button>
+          </mat-form-field>
+          <button [disabled]="!form.valid" (click)='onLoginClick()'>
+            <mat-icon>send</mat-icon>
+          </button>
+
         </div>
+      </form>
+
     </div>
+    <div id="derecho">
+      <div class="titulo">
+        Bienvenido
+      </div>
+      <hr>
+      <div class="pie-form">
+        <a (click)="move('registro')">¿No tienes Cuenta? Registrate</a>
+        <hr>
+        <a (click)="move('cards')">« Volver</a>
+      </div>
+    </div>
+  </div>
+</div>
