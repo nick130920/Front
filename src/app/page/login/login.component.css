@@ -4,7 +4,7 @@ body {
     font-weight: normal;
     font-size: 100%;
     color: #1b262c;
-    
+
     margin: 0;
     background-color: #5f6769;
 }
@@ -14,14 +14,14 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    
+
     margin: 0;
     padding: 0;
     min-width: 100vw;
     min-height: 100vh;
     width: 100%;
     height: 100%;
-    
+
     /*background-image: url(../imagenes/fondo_difuminado_login.jpg);*/
     background-position: center;
     background-size: cover;
@@ -33,24 +33,24 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction:row;
-    
+
     min-width: 380px;
     max-width: 900px;
     width: 90%;
-    
-    background-color: #5f6769;
-    
+
+    background-color: #F07319;
+
     /*opacity: 0.50;
     filter: alpha(opacity=50);*/
-    
+
     border-radius: 10px 10px 10px 10px;
     -moz-border-radius: 10px 10px 10px 10px;
     -webkit-border-radius: 10px 10px 10px 10px;
-    
+
     -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
     -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
     box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    
+
     padding: 30px;
     box-sizing: border-box;
 }
@@ -62,18 +62,18 @@ body {
     max-width: 320px;
     min-width: 320px;
     padding: 30px 30px 50px 30px;
-    background-color: #719192;
-    
+    background-color: #fff;
+
     -webkit-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
     -moz-box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
     box-shadow: 0px 0px 5px 5px rgba(0,0,0,0.15);
-    
+
     border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
-    
+
     box-sizing: border-box;
-    
+
     opacity: 1;
     filter: alpha(opacity=1);
 }
@@ -83,7 +83,7 @@ body {
     font-family: 'Overpass', sans-serif;
     font-size: 120%;
     color:#3c4245;
-    
+
     margin-top: 15px;
 }
 
@@ -91,16 +91,16 @@ body {
     font-family: 'Overpass', sans-serif;
     font-size: 110%;
     color: #1b262c;
-    
+
     display: block;
     width: 100%;
     height: 40px;
-    
+
     margin-bottom: 10px;
     padding: 5px 5px 5px 10px;
-    
+
     box-sizing: border-box;
-    
+
     border: none;
     border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px 3px 3px 3px;
@@ -119,19 +119,28 @@ body {
     width: 100%;
     height: 40px;
     border: none;
-    
+
     border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px 3px 3px 3px;
     -webkit-border-radius: 3px 3px 3px 3px;
-    
-    background-color: #dfcdc3;
-    
+
+    /* background-color: #dfcdc3; */
+
     margin-top: 10px;
+}
+.noback{
+  background-color: transparent !important;
+}
+.verde{
+  background-color: #41B950 !important;
+}
+.naranja{
+  background-color: #F07319 !important;
 }
 
 #login button:hover {
-    background-color: #3c4245;
-    color:#dfcdc3;
+    background-color: #dfcdc3;
+    /* color:#3c4245; */
 }
 /* formulario de login */
 /* formulario de login */
@@ -143,13 +152,13 @@ body {
     /*display: flex;
     align-items:center;
     justify-content:center;*/
-    
+
     text-align: center;
     width: 100%;
-    
+
     opacity: 0.70;
     filter: alpha(opacity=70);
-    
+
     padding:20px 20px 20px 50px;
     box-sizing: border-box;
 }
@@ -166,11 +175,11 @@ body {
 hr {
     border-top: 1px solid #8c8b8b;
 	border-bottom: 1px solid #dfcdc3;
-    
+
 }
 .pie-form {
     font-size: 90%;
-    text-align: center;    
+    text-align: center;
     margin-top: 15px;
 }
 
@@ -214,15 +223,15 @@ hr {
         padding: 30px;
         box-sizing: border-box;
     }
-    
+
     #login {
         margin: 0 auto;
     }
-    
+
     #derecho {
         padding:20px 20px 20px 20px;
     }
-    
+
     #login label {
         text-align: left;
     }

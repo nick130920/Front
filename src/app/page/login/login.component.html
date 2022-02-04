@@ -34,15 +34,15 @@
             <input matInput formControlName="usuario" #message maxlength="100" placeholder="Usuario">
           </mat-form-field>
 
-          <mat-form-field>
+          <mat-form-field appearance="fill">
             <mat-label>Contraseña</mat-label>
             <input matInput formControlName="clave" #message maxlength="100" placeholder="Contraseña" [type]="show ? 'text' : 'password'">
             <button matSuffix mat-icon-button (click)="password()">
-              <mat-icon>visibility</mat-icon>
+              <mat-icon class="noback">visibility</mat-icon>
             </button>
           </mat-form-field>
-          <button [disabled]="!form.valid" (click)='onLoginClick()'>
-            <mat-icon>send</mat-icon>
+          <button class="verde" [disabled]="!form.valid" (click)='onLoginClick()'>
+            <mat-icon style="color: black;">send</mat-icon>
           </button>
 
         </div>
