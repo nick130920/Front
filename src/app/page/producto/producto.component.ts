@@ -215,11 +215,6 @@ export class ProductoComponent implements OnInit {
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
 
-  private mensajeError(err: any) {
-    this.spinner.hide();
-    console.log(err);
-    this.toastr.error('Ha ocurrido un problema ');
-  }
 
   onEditarClick(element: Producto) {
     this.editar = true;
@@ -251,5 +246,10 @@ export class ProductoComponent implements OnInit {
   change(file: FileList): void {
     this.file = file
     this.toastr.success("Archivo Subido");
+  }
+  private mensajeError(err: any) {
+    this.spinner.hide();
+    console.log(err);
+    this.toastr.error('Ha ocurrido un problema ');
   }
 }

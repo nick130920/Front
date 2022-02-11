@@ -1,3 +1,20 @@
+.star {
+  position: relative;
+  display: inline-block;
+  font-size: 2rem;
+  color: #d3d3d3;
+}
+.full {
+  color: #FFC107;
+}
+.half {
+  position: absolute;
+  display: inline-block;
+  overflow: hidden;
+  color: #FFC107;
+}
+
+
 .navbar{
   box-shadow: 2px 2px 5px #F07319; /* Efecto sombra debajo del menú */
   opacity: .9;
