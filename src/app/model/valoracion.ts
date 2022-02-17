@@ -5,7 +5,7 @@ export class Valoracion{
     codigo:number;
     comentario:string;
     estrellas:number;
-    Producto:Producto;
-    Usuario:Usuario;
+    producto:Producto;
+    usuario:Usuario;
 
 }

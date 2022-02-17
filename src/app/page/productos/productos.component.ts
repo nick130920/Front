@@ -77,15 +77,15 @@ export class ProductosComponent implements OnInit {
     comentario.estrellas = this.valoracionesFormGroup.get('valorestrellas').value;
 
     producto.codigo = this.producto.codigo;
-    comentario.Producto = producto;
+    comentario.producto = producto;
 
     usuario.id = 0;
-    comentario.Usuario = usuario;
-    console.log(JSON.stringify(comentario));
+    comentario.usuario = usuario;
     this.valoracionService.crear(comentario).subscribe(data => {
       this.valoracionesFormGroup.reset();
       this.spinner.hide();
       this.toastr.success(this.mensajeSatisfactorio);
+      console.log(comentario);
     }, err => this.mensajeError(err));
   }
   private mensajeError(err: any) {

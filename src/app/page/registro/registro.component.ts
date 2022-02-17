@@ -5,6 +5,7 @@ import { PersonaService } from 'src/app/service/persona.service';
 import { EstadoService } from 'src/app/service/estado.service';
 import { TipoDocService } from 'src/app/service/tipoDoc.service';
 import { UsuarioService } from 'src/app/service/usuario.service';
+import { UsuarioRolService } from 'src/app/service/usuarioRol.service';
 import { Estado } from 'src/app/model/estado';
 import { TipoDoc } from 'src/app/model/tipoDoc';
 import { Usuario } from 'src/app/model/usuario';
@@ -13,6 +14,8 @@ import { Usuario } from 'src/app/model/usuario';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { Router } from '@angular/router';
+import { UsuarioRol } from 'src/app/model/usuarioRol';
+import { Role } from 'src/app/model/role';
 
 @Component({
   selector: 'app-productos',
@@ -33,6 +36,7 @@ export class RegistroComponent implements OnInit {
   constructor(
     private personaService: PersonaService,
     private usuarioService: UsuarioService,
+    private usuarioRolService: UsuarioRolService,
     private estadoService: EstadoService,
     private tipoDocService: TipoDocService,
     private spinner: NgxSpinnerService,
@@ -77,6 +81,8 @@ export class RegistroComponent implements OnInit {
     let estado: Estado = new Estado();
     let tipoDocumento: TipoDoc= new TipoDoc();
     let usuario: Usuario = new Usuario();
+    let role: Role = new Role();
+    let usuarioRol: UsuarioRol = new UsuarioRol();
 
     persona.nombre = this.firstFormGroup.value['name'];
     persona.apellido = this.firstFormGroup.value['lastName'];
@@ -90,6 +96,14 @@ export class RegistroComponent implements OnInit {
     usuario.usuario = this.secondFormGroup.value['user'];
     usuario.clave = this.secondFormGroup.value['password'];
     usuario.estado = estado;
+
+    role.codigo= 2;
+    usuarioRol.estado = estado;
+    usuarioRol.rol = role;
+
+    this.usuarioRolService.crear(usuarioRol).subscribe(data =>{
+      console.log(data);
+    }, err => this.mensajeError(err));
 
     // persona.usuario = usuario;
     console.log(persona);

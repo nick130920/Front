@@ -1,5 +1,6 @@
 import { Estado } from "./estado";
 import { Persona } from "./persona";
+import { Role } from "./role";
 
 
 export class Usuario{

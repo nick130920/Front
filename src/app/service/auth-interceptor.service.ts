@@ -18,7 +18,7 @@ export class AuthInterceptorService  implements HttpInterceptor {
 
     const token: string = sessionStorage.getItem(environment.tokenName);
     let request = req;
-
+    console.log(token);
     if (token) {
       request = req.clone({
         setHeaders: {
@@ -33,7 +33,7 @@ export class AuthInterceptorService  implements HttpInterceptor {
   }
 
   private controlarError(err: HttpErrorResponse): Observable<never> {
-    
+
     if (err.status === 401) {
       this.router.navigateByUrl('/login');
     }

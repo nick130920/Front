@@ -26,11 +26,18 @@ import { MatInputModule } from '@angular/material/input';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoginComponent } from './page/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CarritoComponent } from './page/carrito/carrito.component';
+import { MenuItemComponent } from './page/menu-item/menu-item.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { MenuCarritoComponent } from './menu-carrito/menu-carrito.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    CarritoComponent,
+    MenuItemComponent,
+    MenuCarritoComponent
   ],
   imports: [
     BrowserModule,
@@ -50,6 +57,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatButtonModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    MatDividerModule,
     MatIconModule,
     MatSelectModule,
     MatTableModule,

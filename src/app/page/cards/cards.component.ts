@@ -8,14 +8,16 @@ import { Producto } from 'src/app/model/producto';
 import { ProductoService } from 'src/app/service/producto.service';
 import { Categoria } from 'src/app/model/categoria';
 import { CategoriaService } from 'src/app/service/categoria.service';
+import { CarritoService } from 'src/app/service/carrito.service';
 
 import { Observable } from 'rxjs';
-
+import { NavService } from 'src/app/service/nav.service';
+import { Carrito } from 'src/app/model/carrito';
 
 @Component({
   selector: 'app-cards',
   templateUrl: './cards.component.html',
-  styleUrls: ['./cards.component.css']
+  styleUrls: ['./cards.component.css'],
 })
 export class CardsComponent implements OnInit {
   lstCatCodigo: Categoria[];
@@ -29,11 +31,13 @@ export class CardsComponent implements OnInit {
   constructor(
     private changeDetectorRef: ChangeDetectorRef,
     private productoService: ProductoService,
-    private categoriaService: CategoriaService
-    ) { }
+    private categoriaService: CategoriaService,
+    private carritoService: CarritoService,
+    private navService: NavService
+  ) {}
 
   ngOnInit(): void {
-    this.dataSource.filterPredicate = function(data, filter: string): boolean {
+    this.dataSource.filterPredicate = function (data, filter: string): boolean {
       return data.categoria.nombre.toLowerCase().includes(filter);
     };
     this.changeDetectorRef.detectChanges();
@@ -42,7 +46,7 @@ export class CardsComponent implements OnInit {
   }
 
   buscar() {
-    this.productoService.buscarTodo().subscribe(data => {
+    this.productoService.buscarTodo().subscribe((data) => {
       console.log(data);
       this.dataSource = new MatTableDataSource<Producto>(data);
       this.obs = this.dataSource.connect();
@@ -54,30 +58,63 @@ export class CardsComponent implements OnInit {
     const filtro = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filtro.trim().toLowerCase();
   }
-  filtrar_Categoria(parametro:number) {
-    if(parametro==0){
-      this.productoService.buscarTodo().subscribe(data =>{
+  filtrar_Categoria(parametro: number) {
+    if (parametro == 0) {
+      this.productoService.buscarTodo().subscribe((data) => {
         this.dataSource = new MatTableDataSource<Producto>(data);
         console.log(this.dataSource);
         this.obs = this.dataSource.connect();
         this.paginator.firstPage();
         this.dataSource.paginator = this.paginator;
       });
-    }else{
-      this.productoService.buscarProductosPorCategoria(parametro).subscribe(data =>{
-        this.dataSource = new MatTableDataSource<Producto>(data);
-        console.log(this.dataSource);
-        this.obs = this.dataSource.connect();
-        this.paginator.firstPage();
-        this.dataSource.paginator = this.paginator;
-      });
+    } else {
+      this.productoService
+        .buscarProductosPorCategoria(parametro)
+        .subscribe((data) => {
+          this.dataSource = new MatTableDataSource<Producto>(data);
+          console.log(this.dataSource);
+          this.obs = this.dataSource.connect();
+          this.paginator.firstPage();
+          this.dataSource.paginator = this.paginator;
+        });
     }
   }
 
   listarCategoria() {
-    this.categoriaService.buscarTodo().subscribe(data => {
+    this.categoriaService.buscarTodo().subscribe((data) => {
       this.lstCatCodigo = data;
-    })
+    });
   }
 
+  setProducto(dato) {
+    console.log(dato.codigo);
+    let carrito: Carrito[] = [];
+    let esta: boolean = false;
+    let data = this.carritoService.getData();
+    if (data) {
+      carrito = data;
+      console.log(dato.codigo);
+      for (let i = 0; i < carrito.length; i++) {
+        console.log(carrito[i].codigo);
+        if (carrito[i].codigo == dato.codigo) {
+          esta = true;
+          console.log(carrito[i].cantidad);
+          if (carrito[i].cantidad > 0) {
+            carrito[i].cantidad = carrito[i].cantidad + 1;
+          } else {
+            carrito[i].cantidad = 1;
+          }
+        }
+      }
+      if (!esta) {
+        dato.cantidad = 1;
+        carrito.push(dato);
+      }
+      // carrito.push(dato);
+    }
+    console.log(carrito);
+
+    // this.navService.carrito.emit(carrito);
+    this.carritoService.setData(carrito);
+  }
 }

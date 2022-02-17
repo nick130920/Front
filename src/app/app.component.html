@@ -8,13 +8,21 @@
           <img src="assets/images/E-Commerce2.png" width="128" style="margin-left: 20px">
         </button>
         <span class="example-spacer"></span>
+        <app-cards></app-cards>
+        <!-- <button mat-icon-button [matMenuTriggerFor]="menucarrito">
+          <mat-icon>shopping_cart</mat-icon>
+      </button> -->
+      <!-- <span *ngFor="let item of productos">-->
+      <button mat-icon-button routerLink="/carrito" >
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+        <!-- {{productos[0].codigo}} -->
+          <!-- <app-menu-item #menu [items]="item.children"></app-menu-item> -->
+      <!-- </span> -->
 
         <button mat-icon-button [matMenuTriggerFor]="menu">
             <mat-icon>more_vert</mat-icon>
         </button>
-
-
-
 
         <mat-menu #menu="matMenu">
             <button mat-menu-item routerLink="/perfil" *ngIf="!sesion">
@@ -23,9 +31,23 @@
             </button>
             <button mat-menu-item routerLink="/login" *ngIf="sesion">
                 <mat-icon>exit_to_app</mat-icon>
-                <span>Iniciar Sesión</span>
+                <span>Inicia Sesión</span>
+            </button>
+            <button mat-menu-item routerLink="/registro" *ngIf="sesion">
+              <mat-icon>account_box</mat-icon>
+              <span>Registrate</span>
+            </button>
+            <button mat-menu-item (click)="closeS()" *ngIf="!sesion">
+                <mat-icon>exit_to_app</mat-icon>
+                <span>Cerrar sesion</span>
             </button>
         </mat-menu>
+        <!-- <mat-menu #menucarrito="matMenu" *ngFor="let producto of carrito">
+          <button mat-menu-item routerLink="/carrito" *ngIf="!sesion">
+
+            <span>Mi Perfil</span>
+        </button>
+        </mat-menu> -->
     </mat-toolbar>
 
     <mat-sidenav-container class="example-sidenav-container">
