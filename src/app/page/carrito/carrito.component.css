@@ -1,0 +1,18 @@
+.card-central{
+  margin: 2% 4%;
+  padding: 3%;
+}
+.avatar{
+  height: 4vw;
+  width: 4vw;
+}
+.list{
+  padding-top: 16px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.centrar{
+  display: flex;
+  margin: auto;
+}

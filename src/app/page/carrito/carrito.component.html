@@ -1,0 +1,39 @@
+<mat-card class="card-central container">
+  <div class="list" *ngFor="let producto of carrito$">
+    <mat-card-header class="d-flex justify-content-between align-items-center">
+      <div class="col-4">
+        <img
+          mat-card-avatar
+          class="avatar"
+          src="http://localhost:8181/api/producto/imagen/{{ producto.codigo }}"
+          onerror="this.src='../../../assets/images/not.png'"
+          alt=""
+        />
+        <mat-card-title>{{ producto.nombre }}</mat-card-title>
+        <mat-card-subtitle>{{ producto.stock }}</mat-card-subtitle>
+      </div>
+      <!-- <span class="example-spacer"></span> -->
+      <div class="col-2 centrar">
+        <button mat-button (click)="reduceCantidad(producto)"><mat-icon>remove</mat-icon></button>
+        <h3>{{producto.cantidad}}</h3>
+        <button mat-button (click)="aumentaCantidad(producto)"><mat-icon>add</mat-icon></button>
+      </div>
+      <!-- <span class="example-spacer"></span> -->
+      <div class="col-2 centrar float-end">
+        <h2>{{ producto.precio }}</h2>
+        <button mat-button (click)="eliminar(producto)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{ producto.descripcion }}
+      </p>
+    </mat-card-content>
+    <mat-divider></mat-divider>
+  </div>
+  <div class="list" *ngIf="leng[0].length==0">
+    <h2>Aprovecha las miles de ofertas y agrega productos al carrito.</h2>
+  </div>
+</mat-card>
