@@ -27,17 +27,15 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoginComponent } from './page/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CarritoComponent } from './page/carrito/carrito.component';
-import { MenuItemComponent } from './page/menu-item/menu-item.component';
 import {MatDividerModule} from '@angular/material/divider';
-import { MenuCarritoComponent } from './menu-carrito/menu-carrito.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     CarritoComponent,
-    MenuItemComponent,
-    MenuCarritoComponent
+
   ],
   imports: [
     BrowserModule,
@@ -53,7 +51,6 @@ import { MenuCarritoComponent } from './menu-carrito/menu-carrito.component';
     HttpClientModule,
     MatCardModule,
     MatInputModule,
-    MatFormFieldModule,
     MatButtonModule,
     FlexLayoutModule,
     ReactiveFormsModule,
@@ -63,7 +60,8 @@ import { MenuCarritoComponent } from './menu-carrito/menu-carrito.component';
     MatTableModule,
     MatPaginatorModule,
     MaterialFileInputModule,
-    NgbModule
+    NgbModule,
+    MatFormFieldModule,
   ],
   providers: [
     {

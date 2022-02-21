@@ -55,7 +55,6 @@
             <button mat-menu-item (click)="sidenav.toggle()" routerLink="/productos" style="cursor: pointer">
               <img src="assets/images/E-Commerce2.png" width="128" style="margin-left: 20px">
             </button>
-
             <button mat-menu-item (click)="sidenav.toggle()" routerLink="/productos" style="cursor: pointer">
                 <mat-icon>insert_drive_file</mat-icon>
                 <span>Productos</span>
@@ -65,7 +64,16 @@
                 <mat-icon>insert_drive_file</mat-icon>
                 <span>Categoria.</span>
             </button>
-
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/cupones" style="cursor: pointer">
+              <mat-icon>insert_drive_file</mat-icon>
+              <span>Cupones.</span>
+            </button>
+            <mat-divider></mat-divider>
+            <button mat-menu-item (click)="sidenav.toggle()" routerLink="/perfiles" style="cursor: pointer">
+              <mat-icon>insert_drive_file</mat-icon>
+              <span>Perfiles.</span>
+            </button>
             <button mat-menu-item (click)="closeS()"
                 style="cursor: pointer; bottom: 5px; position: absolute;" *ngIf="!sesion">
                 <mat-icon>exit_to_app</mat-icon>

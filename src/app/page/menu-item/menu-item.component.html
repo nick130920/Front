@@ -1,8 +1,0 @@
-<mat-menu #childMenu="matMenu" [overlapTrigger]="false">
-  <span *ngFor="let child of items">
-      <button mat-menu-item color="primary" [matMenuTriggerFor]="menu.childMenu">
-        <span>{{child.displayName}}</span>
-      </button>
-      <app-menu-item #menu [items]="child.children"></app-menu-item>
-  </span>
-</mat-menu>

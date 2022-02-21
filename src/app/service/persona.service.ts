@@ -11,6 +11,7 @@ import { Usuario } from '../model/usuario';
 export class PersonaService {
 
   private url: string = `${environment.apiUrl}/persona`;
+  private urlUsuario: string = `${environment.apiUrl}/usuario`;
 
   constructor(
     private http: HttpClient
@@ -29,14 +30,23 @@ export class PersonaService {
   }
 
   editar(persona: Persona): Observable<void> {
-    return this.http.put<void>(`${this.url}/actualizar`, persona)
+    return this.http.put<void>(`${this.url}/actualizar-para-usuario`, persona)
+  }
+
+  editarAdmin(persona: Persona): Observable<void> {
+    return this.http.put<void>(`${this.url}/actualizar-admin`, persona)
   }
 
   eliminar(persona: Persona): Observable<void> {
     return this.http.put<void>(`${this.url}/eliminar`, persona);
   }
-  listarPersona(): Observable<Usuario[]>{
-    return this.http.get<Usuario[]>(`${this.url}/listar-persona`);
+  listarPersona(usuario): Observable<Usuario[]>{
+    console.log(`${this.url}/buscar/${usuario}`);
+    return this.http.get<Usuario[]>(`${this.urlUsuario}/buscar/${usuario}`);
+  }
+
+  listarPersonaU(): Observable<Persona>{
+    return this.http.get<Persona>(`${this.url}/listar-persona`);
   }
 
 }

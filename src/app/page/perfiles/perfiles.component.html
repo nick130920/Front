@@ -1,0 +1,91 @@
+<div>
+  <form [formGroup]="form">
+      <br>
+      <div fxLayout="row" fxLayoutAlign="space-evenly center">
+          <mat-form-field>
+              <mat-label>Nombre</mat-label>
+              <input matInput formControlName="nombre" placeholder="Name">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Apellido</mat-label>
+            <input matInput formControlName="apellido" placeholder="Name">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Nacimiento</mat-label>
+            <input matInput formControlName="nacimiento" placeholder="Name">
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>Correo</mat-label>
+            <input matInput formControlName="correo" placeholder="Name">
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+          <button style="background-color: #41B950; color: white;" [disabled]="!form.valid" (click)='clickEnviar()' mat-raised-button>
+             Enviar
+          </button>
+
+          <button  style="background-color: #FA7D19; color: white;" (click)='onCancelar()' mat-raised-button>
+              Cancelar
+          </button>
+
+          <button (click)='onEliminar()' *ngIf="editar" class="boton">
+              <mat-icon>delete</mat-icon>
+          </button>
+      </div>
+  </form>
+
+  <br><br>
+
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource">
+
+      <ng-container matColumnDef="codigo">
+          <th mat-header-cell *matHeaderCellDef> Codigo </th>
+          <td mat-cell *matCellDef="let element"> {{element.codigo}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="apellido">
+          <th mat-header-cell *matHeaderCellDef> Apellido </th>
+          <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nacimiento">
+        <th mat-header-cell *matHeaderCellDef> Nacimiento </th>
+        <td mat-cell *matCellDef="let element"> {{element.nacimiento}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="correo">
+        <th mat-header-cell *matHeaderCellDef> Correo </th>
+        <td mat-cell *matCellDef="let element"> {{element.correo}} </td>
+    </ng-container>
+
+      <!--editar-->
+      <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef> Editar </th>
+          <td mat-cell *matCellDef="let element">
+              <div class="example-button-container">
+                  <button mat-icon-button (click)='onEditarClick(element)'>
+                      <mat-icon>edit</mat-icon>
+                  </button>
+              </div>
+          </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+</div>

@@ -1,4 +1,58 @@
-<mat-card class="card-central container">
+<table class=" card-central container table table-striped" *ngIf="validador">
+  <thead>
+    <tr>
+        <th>Producto</th>
+        <th>Precio</th>
+        <th>Cantidad</th>
+        <th>Subtotal</th>
+        <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="list" *ngFor="let producto of carrito$">
+      <td><img
+        mat-card-avatar
+        class="avatar"
+        src="http://localhost:8181/api/producto/imagen/{{ producto.codigo }}"
+        onerror="this.src='../../../assets/images/not.png'"
+        alt=""
+        style="height: 70px;"
+      /></td>
+      <td>{{ producto.precio | currency }}</td>
+      <td class="cantidad">
+        <button [disabled]="producto.cantidad <= 1" mat-button (click)="reduceCantidad(producto)"><mat-icon>remove</mat-icon></button>
+        <h3>{{producto.cantidad}}</h3>
+        <button [disabled]="producto.cantidad >= producto.stock" mat-button (click)="aumentaCantidad(producto)"><mat-icon>add</mat-icon></button>
+      </td>
+      <td>
+        $ {{producto.cantidad*producto.precio | number}}
+      </td>
+      <td>
+        <button mat-button (click)="eliminar(producto)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="card-central container d-flex justify-content-between align-items-center" *ngIf="validador">
+  <a [routerLink]="['/']">Seguir comprando</a>
+  <h3>
+    {{ total() | currency }}
+  </h3>
+  <div class="row">
+    <div class="col-md-12">
+        <div class="form-group">
+            <label>Cupon</label>
+            <input #cupon (keyup)="guardarCupon(cupon.value)" name="cupon" class="form-control"/>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <button (click)="btnEnvio()">Enviar</button>
+    </div>
+  </div>
+</div>
+<!-- <mat-card class="card-central container">
   <div class="list" *ngFor="let producto of carrito$">
     <mat-card-header class="d-flex justify-content-between align-items-center">
       <div class="col-4">
@@ -12,14 +66,15 @@
         <mat-card-title>{{ producto.nombre }}</mat-card-title>
         <mat-card-subtitle>{{ producto.stock }}</mat-card-subtitle>
       </div>
+-->
       <!-- <span class="example-spacer"></span> -->
-      <div class="col-2 centrar">
+      <!-- <div class="col-2 centrar">
         <button mat-button (click)="reduceCantidad(producto)"><mat-icon>remove</mat-icon></button>
         <h3>{{producto.cantidad}}</h3>
         <button mat-button (click)="aumentaCantidad(producto)"><mat-icon>add</mat-icon></button>
-      </div>
+      </div> -->
       <!-- <span class="example-spacer"></span> -->
-      <div class="col-2 centrar float-end">
+      <!-- <div class="col-2 centrar float-end">
         <h2>{{ producto.precio }}</h2>
         <button mat-button (click)="eliminar(producto)">
           <mat-icon>delete</mat-icon>
@@ -33,7 +88,9 @@
     </mat-card-content>
     <mat-divider></mat-divider>
   </div>
-  <div class="list" *ngIf="leng[0].length==0">
-    <h2>Aprovecha las miles de ofertas y agrega productos al carrito.</h2>
-  </div>
 </mat-card>
+-->
+  <div class="list card-central container" *ngIf="!validador">
+    <h2>Aprovecha las miles de ofertas y agrega productos al carrito.</h2>
+    <a [routerLink]="['/']">Seguir comprando</a>
+  </div>

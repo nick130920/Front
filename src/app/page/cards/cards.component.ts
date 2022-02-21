@@ -91,16 +91,16 @@ export class CardsComponent implements OnInit {
     let carrito: Carrito[] = [];
     let esta: boolean = false;
     let data = this.carritoService.getData();
-    if (data) {
+    if (data != null) {
       carrito = data;
-      console.log(dato.codigo);
       for (let i = 0; i < carrito.length; i++) {
         console.log(carrito[i].codigo);
         if (carrito[i].codigo == dato.codigo) {
           esta = true;
           console.log(carrito[i].cantidad);
           if (carrito[i].cantidad > 0) {
-            carrito[i].cantidad = carrito[i].cantidad + 1;
+            if(carrito[i].cantidad < carrito[i].stock)
+              carrito[i].cantidad = carrito[i].cantidad + 1;
           } else {
             carrito[i].cantidad = 1;
           }
@@ -111,6 +111,9 @@ export class CardsComponent implements OnInit {
         carrito.push(dato);
       }
       // carrito.push(dato);
+    }else{
+      carrito[0] = dato;
+      carrito[0]['cantidad'] = 1;
     }
     console.log(carrito);
 

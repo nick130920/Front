@@ -20,54 +20,75 @@
             <i class="fa fa-list text-center mr-1"></i>
             Historial
           </a>
+          <a class="nav-link" id="historial-tab" data-toggle="pill" href="#usuarios" role="tab"
+            aria-controls="historial" aria-selected="false">
+            <i class="fa fa-users text-center mr-1"></i>
+            Usuarios
+          </a>
         </div>
       </div>
       <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="informacion" role="tabpanel" aria-labelledby="informacion-tab">
           <h3 class="mb-4">Información Personal</h3>
           <div class="row">
-            <form [formGroup]="form">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Nombres</label>
-                  <input matInput formControlName="nombre" class="form-control" />
+            <form [formGroup]="formulario" (ngSubmit)="clickEnviar()">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <mat-form-field >
+                      <label>Nombres</label>
+                      <input matInput formControlName="nombre" class="form-control" />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <mat-form-field >
+                    <label>Apellidos</label>
+                    <input matInput formControlName="apellido" class="form-control" />
+                  </mat-form-field>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Apellidos</label>
-                  <input matInput formControlName="apellido" class="form-control" />
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <mat-form-field >
+                      <label>Correo</label>
+                      <input matInput formControlName="correo" class="form-control" />
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <mat-form-field >
+                      <label>Documento</label>
+                      <input matInput formControlName="documento" type="number" class="form-control" readonly="true"/>
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Correo</label>
-                  <input matInput formControlName="correo" class="form-control" />
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                      <mat-form-field >
+                      <label>Fecha de nacimiento</label>
+                      <input matInput formControlName="nacimiento" class="form-control"/>
+                    </mat-form-field>
+                  </div>
                 </div>
               </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Documento</label>
-                  <input matInput formControlName="documento" type="number" class="form-control" />
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label>Fecha de nacimiento</label>
-                  <input matInput formControlName="nacimiento" class="form-control"/>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group"></div>
-              </div>
-              <div class="col-md-12">
-                <div class="form-group"></div>
-              </div>
+              <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid">Editar</button>
             </form>
           </div>
         </div>
+
         <div class="tab-pane fade" id="historial" role="tabpanel" aria-labelledby="historial-tab">
           <h3 class="mb-4">Historial</h3>
+        </div>
+
+        <div class="tab-pane fade" id="usuarios" role="tabpanel" aria-labelledby="historial-tab">
+          <h3 class="mb-4">Usuarios</h3>
         </div>
       </div>
     </div>

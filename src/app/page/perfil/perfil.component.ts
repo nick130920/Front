@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl,  Validators } from '@angular/forms';
 import { PersonaService } from 'src/app/service/persona.service';
+import { UsuarioService } from 'src/app/service/usuario.service';
 
 // import { Usuario } from 'src/app/model/usuario';
 
@@ -17,33 +18,40 @@ import { Persona } from 'src/app/model/persona';
 })
 export class PerfilComponent implements OnInit {
 
-  form: FormGroup;
+  formulario: FormGroup;
   editar: boolean = false;
+  usuario;
+
+  usuarios: any;
+
 
   constructor(
     private fb: FormBuilder,
     private personaService: PersonaService,
+    private usuarioService: UsuarioService,
     private spinner: NgxSpinnerService,
     private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
+    this.usuario = localStorage.getItem('usuario');
     this.initForm();
-    this.buscarPersona();
+    this.buscarPersona(this.usuario);
   }
   private initForm(): void {
-    this.form = this.fb.group({
+    this.formulario = this.fb.group({
       nombre: new FormControl('', Validators.required),
       apellido: new FormControl('', Validators.required),
       correo: new FormControl('', Validators.required),
       documento: new FormControl('', Validators.required),
       nacimiento: new FormControl('', Validators.required),
+      codigo: new FormControl(),
     });
+    // rud de persona - Perfil - arreglar el login
   }
-  buscarPersona(){
-    this.personaService.listarPersona().subscribe(res => {
-      console.log(res)
-      this.onEditarClick(res);
+  buscarPersona(usuario){
+    this.personaService.listarPersona(usuario).subscribe(res => {
+      this.onEditarClick(res['persona']);
     }, err => this.mensajeError(err));
     // console.log(persona);
   }
@@ -52,21 +60,28 @@ export class PerfilComponent implements OnInit {
     let persona: Persona = new Persona();
     this.spinner.show();
 
-    persona.nombre = this.form.get('nombre').value;
-    persona.apellido = this.form.get('apellido').value;
-    persona.correo = this.form.get('correo').value;
-    persona.documento = this.form.get('documento').value;
-    persona.nacimiento = this.form.get('nacimiento').value
+    persona.nombre = this.formulario.get('nombre').value;
+    persona.apellido = this.formulario.get('apellido').value;
+    persona.correo = this.formulario.get('correo').value;
+    persona.documento = this.formulario.get('documento').value;
+    persona.nacimiento = this.formulario.get('nacimiento').value;
+    persona.codigo = this.formulario.get('codigo').value;
+    this.personaService.editar(persona).subscribe(res => {
+      console.log('Exit')
+    }, err => console.log(err)
+    )
     console.log(persona);
   }
 
   onEditarClick(element) {
     this.editar = true;
-    this.form.get('nombre').setValue(element.nombre);
-    this.form.get('apellido').setValue(element.apellido);
-    this.form.get('correo').setValue(element.correo);
-    this.form.get('documento').setValue(element.documento);
-    this.form.get('nacimiento').setValue(element.nacimiento);
+    this.formulario.get('nombre').setValue(element.nombre);
+    this.formulario.get('apellido').setValue(element.apellido);
+    this.formulario.get('correo').setValue(element.correo);
+    this.formulario.get('documento').setValue(element.documento);
+    this.formulario.get('nacimiento').setValue(element.nacimiento);
+    this.formulario.get('codigo').setValue(element.codigo);
+    console.log(element)
   }
   private mensajeError(err: any) {
     this.spinner.hide();
